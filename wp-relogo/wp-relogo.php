@@ -38,7 +38,7 @@ function cc_relogo_addtag() {
  * If in wp-admin, load plugin's admin functions
  */
 if ( is_admin() ) {
-	require_once( dirname(__FILE__) . '/includes/admin.php' );
+	require_once( dirname(__FILE__) . '/admin/wp-relogo-admin.php' );
 }
 
 
