@@ -3,7 +3,6 @@ Contributors: cconover
 Tags: logo, relogo, graphics, head
 Requires at least: 3.5.2
 Tested up to: 3.7.1
-Stable tag: 0.1.1
 Stable tag: 0.2.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,5 +34,7 @@ The rel="logo" spec requires the use of SVG (.svg) image files.
 == Changelog ==
 
 = 0.2.0 =
+* Validate URL in Options. Check for a valid protocol (HTTP or HTTPS) and a .svg file
+
 = 0.1.0 =
 Initial release.
