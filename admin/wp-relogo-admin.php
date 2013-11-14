@@ -21,7 +21,7 @@ add_action( 'admin_menu', 'cc_relogo_create_menu' );
 add_action( 'admin_init', 'cc_relogo_admin_init' );
 
 function cc_relogo_admin_init() {
-	register_setting( 'cc-relogo-options-group', 'cc_relogo_options' ); // Register the settings group with the function
+	register_setting( 'cc-relogo-options-group', 'cc_relogo_options', 'cc_relogo_options_validate' ); // Register the settings group with the function
 
 	add_settings_section(
 		'options',							// Name of the section
@@ -61,6 +61,28 @@ function cc_relogo_logourl_callback() {
 	
 	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; //Display text input field for 'logourl'
 } // End 'logourl' callback
+
+function cc_relogo_options_validate( $input ) {
+	$options = get_option( 'cc_relogo_options '); // Retrieve options from database
+	
+	$logourl = $input['logourl']; // Set local variable for 'logourl' passed from form
+	
+	/* Make sure the input is a URL that starts with either http:// or https:// */
+	if ( preg_match( '/^http\:\/\/|https\:\/\//i', $logourl ) ) {
+		/* Check whether user provided .svg file, otherwise throw an error */
+		if ( preg_match( '/\.svg$/i', $logourl ) ) {
+			$options['logourl'] = $logourl;
+		}
+		else {
+			add_settings_error( 'cc_relogo_options', 'invalid-file-extension', 'You did not provide an SVG file.' );
+		} // End SVG vaildation
+	}
+	else {
+		add_settings_error( 'cc_relogo_options', 'invalid-url-protocol', 'You did not provide a valid URL. The URL must start with either "http://" or "https://".' );
+	}
+	
+	return $options;
+} // End cc_relogo_options_validate()
 
 /**
  * Relogo Settings Page
