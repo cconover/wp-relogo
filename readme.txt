@@ -34,5 +34,6 @@ The rel="logo" spec requires the use of SVG (.svg) image files.
 
 == Changelog ==
 
+= 0.2.0 =
 = 0.1.0 =
 Initial release.
