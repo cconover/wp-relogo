@@ -29,11 +29,11 @@ function cc_relogo_admin_init() {
 		'cc_relogo_options_callback',		// Callback function for displaying information
 		'cc-relogo'							// Page ID for the options page
 	);
-	
-	add_settings_field(
-		'logourl',							// Field ID
-		'Logo URL',							// Field title, displayed to the left of the field on the options page
-		'cc_relogo_logourl_callback',		// Callback function to display the field
+
+	add_settings_field(						// Toggle the rel="logo" tag in <head>
+		'active',							// Field ID
+		'Active?',							// Field title, displayed to the left of the field on the options page
+		'cc_relogo_active_callback',		// Callback function to display the field
 		'cc-relogo',						// Page ID for the options page
 		'options'							// Settings section in which to display the field
 	);
