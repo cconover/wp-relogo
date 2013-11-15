@@ -48,7 +48,7 @@ function cc_relogo_admin_init() {
 
 /* Display information about settings section */
 function cc_relogo_options_callback() {
-	echo '<p>Please provide a URL to the SVG file you would like to use.</p>';
+	echo '<p>Please provide the URL to the SVG file you would like to use.</p>';
 }
 
 /* 'logourl callback' */
