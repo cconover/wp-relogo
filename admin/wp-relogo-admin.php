@@ -85,6 +85,16 @@ function cc_relogo_options_validate( $input ) {
 	return $options;
 } // End cc_relogo_options_validate()
 
+/* Provide the user with the <img> tag that uses the relogo.org API */
+function cc_relogo_api_imgtag() {
+	$url = get_site_url(); // Retrieve the site URL
+	$url = preg_replace( "/^http\:\/\/|https\:\/\//i", "", $url ); // Strip the protocol from the site URL
+	
+	$imgtag = '<strong>Use this tag to display your logo elsewhere:</strong> <pre><code>&lt;img src="http://relogo.org/api/' . $url . '" /&gt;</code></pre>'; // Create the <img> tag to display to the user
+	
+	echo $imgtag; // Display the tag
+}
+
 /**
  * Relogo Settings Page
  */
@@ -106,6 +116,9 @@ function cc_relogo_options_page() {
 			submit_button();								// WordPress-generated 'Save Changes' button
 			?>
 		</form>
+		<?php
+		cc_relogo_api_imgtag(); // Display API-based <img> tag
+		?>
 	</div>
 	
 	<?php	
