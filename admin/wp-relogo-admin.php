@@ -36,6 +36,13 @@ function cc_relogo_admin_init() {
 		'cc_relogo_active_callback',		// Callback function to display the field
 		'cc-relogo',						// Page ID for the options page
 		'options'							// Settings section in which to display the field
+	);	
+	add_settings_field(						// Logo URL
+		'logourl',
+		'Logo URL',
+		'cc_relogo_logourl_callback',
+		'cc-relogo',
+		'options'
 	);
 }
 
