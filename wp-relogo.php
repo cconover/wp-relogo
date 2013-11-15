@@ -3,7 +3,7 @@
 Plugin Name: Relogo
 Plugin URI: https://christiaanconover.com/code/wp-relogo
 Description: Add support for the rel="logo" tag to your site, in accordance with the spec published at <a href="http://relogo.org">relogo.org</a>. <strong>This requires your logo in SVG format.</strong>
-Version: 0.2.0
+Version: 0.3.0
 Author: Christiaan Conover
 Author URI: https://christiaanconover.com
 License: GPLv2
@@ -71,4 +71,16 @@ function cc_relogo_deactivate() {
 	remove_action( 'wp_head', 'cc_relogo_addtag' );
 } // End of deactivation
 register_deactivation_hook( __FILE__, 'cc_relogo_deactivate' ); // Register deactivation function with WordPress' deactivation hook
+
+/**
+ * Allow uploading of SVG files to WordPress
+ */
+function cc_relogo_enable_svgupload( $existing_mimes=array() ) {
+	// add the file extension to the array
+	$existing_mimes['svg'] = 'image/svg+xml';
+	
+	// call the modified list of extensions
+	return $existing_mimes;
+}
+add_filter('upload_mimes', 'cc_relogo_enable_svgupload');
 ?>
