@@ -69,6 +69,21 @@ function cc_relogo_logourl_callback() {
 	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; // Display text input field for 'logourl'
 } // End cc_relogo_logourl_callback()
 
+/* Callback for 'active' */
+function cc_relogo_active_callback() {
+	$options = get_option( 'cc_relogo_options' ); // Retrieve plugin options from the database
+	
+	/* Determine whether the box should be checked based on setting in database */
+	if ( isset( $options['active'] ) ) {
+		$checked = 'checked';
+	}
+	else {
+		$checked = '';
+	}
+	
+	echo '<input id="active" name="cc_relogo_options[active]" type="checkbox" value="Active" ' . $checked . '>';
+} // End cc_relogo_active_callback()
+
 /* Validate the options submitted by the user */
 function cc_relogo_options_validate( $input ) {
 	$options = get_option( 'cc_relogo_options '); // Retrieve options from database
