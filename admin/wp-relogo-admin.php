@@ -59,7 +59,7 @@ function cc_relogo_logourl_callback() {
 		$logourl_length = strlen( $options['logourl'] ); // Use the length of the current value if it's between 60 and 90
 	}
 	
-	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; //Display text input field for 'logourl'
+	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; // Display text input field for 'logourl'
 } // End 'logourl' callback
 
 function cc_relogo_options_validate( $input ) {
