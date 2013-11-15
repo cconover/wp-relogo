@@ -33,6 +33,10 @@ The rel="logo" spec requires the use of SVG (.svg) image files.
 
 == Changelog ==
 
+= 0.3.0 =
+* Display HTML img tag on Options page for users to display their Relogo elsewhere
+* Allow uploading SVG files to WordPress media library
+
 = 0.2.0 =
 * Validate URL in Options. Check for a valid protocol (HTTP or HTTPS) and a .svg file
 
