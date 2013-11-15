@@ -62,6 +62,7 @@ function cc_relogo_logourl_callback() {
 	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; // Display text input field for 'logourl'
 } // End 'logourl' callback
 
+/* Validate the options submitted by the user */
 function cc_relogo_options_validate( $input ) {
 	$options = get_option( 'cc_relogo_options '); // Retrieve options from database
 	
