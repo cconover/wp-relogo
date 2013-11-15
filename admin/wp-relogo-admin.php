@@ -104,6 +104,9 @@ function cc_relogo_options_validate( $input ) {
 		add_settings_error( 'cc_relogo_options', 'invalid-url-protocol', 'You did not provide a valid URL. The URL must start with either "http://" or "https://".' );
 	}
 	
+	/* Directly pass options not needing validation back to the database */
+	$options['active'] 		= $input['active'];
+	
 	return $options;
 } // End cc_relogo_options_validate()
 
