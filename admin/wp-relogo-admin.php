@@ -72,7 +72,7 @@ function cc_relogo_options_validate( $input ) {
 	if ( preg_match( '/^http\:\/\/|https\:\/\//i', $logourl ) ) {
 		/* Check whether user provided .svg file, otherwise throw an error */
 		if ( preg_match( '/\.svg$/i', $logourl ) ) {
-			$options['logourl'] = $logourl;
+			$options['logourl'] = $logourl; // File type validates, pass input to the database options
 		}
 		else {
 			add_settings_error( 'cc_relogo_options', 'invalid-file-extension', 'You did not provide an SVG file.' );
