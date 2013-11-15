@@ -71,4 +71,16 @@ function cc_relogo_deactivate() {
 	remove_action( 'wp_head', 'cc_relogo_addtag' );
 } // End of deactivation
 register_deactivation_hook( __FILE__, 'cc_relogo_deactivate' ); // Register deactivation function with WordPress' deactivation hook
+
+/**
+ * Allow uploading of SVG files to WordPress
+ */
+function cc_relogo_enable_svgupload( $existing_mimes=array() ) {
+	// add the file extension to the array
+	$existing_mimes['svg'] = 'image/svg+xml';
+	
+	// call the modified list of extensions
+	return $existing_mimes;
+}
+add_filter('upload_mimes', 'cc_relogo_enable_svgupload');
 ?>
