@@ -30,7 +30,6 @@ function cc_relogo_reltag() {
 	}
 } // End cc_relogo_reltag()
 
-
 /**
  * If in wp-admin, load plugin's admin functions
  */
@@ -54,8 +53,7 @@ function cc_relogo_activate() {
 	
 	/* Set default options for plugin */
 	$options = array (
-		'logourl'		=> $defaultlogo,	// 'logourl' is set to the Relogo logo
-		'active'		=> ''				// Adding tag to head is off
+		'logourl'		=> $defaultlogo	// 'logourl' is set to the Relogo logo
 	);
 	add_option( 'cc_relogo_options', $options );
 } // End of activation
