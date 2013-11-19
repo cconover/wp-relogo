@@ -33,6 +33,9 @@ The rel="logo" spec requires the use of SVG (.svg) image files.
 
 == Changelog ==
 
+= 0.4.1 =
+* Display admin notice if the tag is not set to Active. Version 0.4.0 adds field, but is off by default and user is not made aware.
+
 = 0.4.0 =
 * Added toggle for making rel="logo" tag active. Allows adjustment of SVG URL before showing the tag.
 
