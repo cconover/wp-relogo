@@ -16,6 +16,7 @@ License: GPLv2
  */
 function cc_relogo_setup() {
 	add_action( 'wp_head', 'cc_relogo_reltag' ); // Add the rel="logo" tag to wp_head()
+	// add_action( 'wp_enqueue_scripts', 'cc_relogo_downloadtiptags' ); // Add Logo Downloadtip to script calls in <head>
 }
 add_action( 'plugins_loaded', 'cc_relogo_setup' ); // Add setup to plugins_loaded()
 
@@ -29,7 +30,6 @@ function cc_relogo_reltag() {
 		echo '<link rel="logo" type="image/svg" href="' . $options['logourl'] . '" />' . PHP_EOL;
 	}
 } // End cc_relogo_reltag()
-
 
 /**
  * If in wp-admin, load plugin's admin functions
@@ -54,8 +54,7 @@ function cc_relogo_activate() {
 	
 	/* Set default options for plugin */
 	$options = array (
-		'logourl'		=> $defaultlogo,	// 'logourl' is set to the Relogo logo
-		'active'		=> ''				// Adding tag to head is off
+		'logourl'		=> $defaultlogo	// 'logourl' is set to the Relogo logo
 	);
 	add_option( 'cc_relogo_options', $options );
 } // End of activation
