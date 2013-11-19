@@ -121,6 +121,25 @@ function cc_relogo_api_imgtag() {
 }
 
 /**
+ * Set admin notice if 'active' is not set
+ */
+function cc_relogo_inactive_admin_notice() {
+	$options = get_option( 'cc_relogo_options' ); // Retrieve options from the database
+	
+	$optionsurl = admin_url( 'options-general.php?page=cc-relogo' ); // Get link to Relogo Options page
+	
+	/* Check whether 'active' is set, and if not show a notice */
+	if ( !isset( $options['active'] ) ) {
+		?>
+		<div class="error">
+			<p>The rel="logo" tag is not currrently active. Please update <a href="<?php echo $optionsurl; ?>">Relogo Settings</a> to make it active.</p>
+		</div>
+		<?php
+	}
+}
+add_action( 'admin_notices', 'cc_relogo_inactive_admin_notice' ); // Add admin notice function to admin notices hook
+
+/**
  * Relogo Settings Page
  */
 function cc_relogo_options_page() {
