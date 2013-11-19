@@ -29,19 +29,26 @@ function cc_relogo_admin_init() {
 		'cc_relogo_options_callback',		// Callback function for displaying information
 		'cc-relogo'							// Page ID for the options page
 	);
-	
-	add_settings_field(
-		'logourl',							// Field ID
-		'Logo URL',							// Field title, displayed to the left of the field on the options page
-		'cc_relogo_logourl_callback',		// Callback function to display the field
+
+	add_settings_field(						// Toggle the rel="logo" tag in <head>
+		'active',							// Field ID
+		'Active?',							// Field title, displayed to the left of the field on the options page
+		'cc_relogo_active_callback',		// Callback function to display the field
 		'cc-relogo',						// Page ID for the options page
 		'options'							// Settings section in which to display the field
+	);	
+	add_settings_field(						// Logo URL
+		'logourl',
+		'Logo URL',
+		'cc_relogo_logourl_callback',
+		'cc-relogo',
+		'options'
 	);
 }
 
 /* Display information about settings section */
 function cc_relogo_options_callback() {
-	echo '<p>Please provide a URL to the SVG file you would like to use.</p>';
+	echo '<p>Please provide the URL to the SVG file you would like to use.</p>';
 }
 
 /* 'logourl callback' */
@@ -60,7 +67,22 @@ function cc_relogo_logourl_callback() {
 	}
 	
 	echo '<input id="logourl" name="cc_relogo_options[logourl]" type="text" size="'. $logourl_length . '" value="' . $options['logourl'] . '" />'; // Display text input field for 'logourl'
-} // End 'logourl' callback
+} // End cc_relogo_logourl_callback()
+
+/* Callback for 'active' */
+function cc_relogo_active_callback() {
+	$options = get_option( 'cc_relogo_options' ); // Retrieve plugin options from the database
+	
+	/* Determine whether the box should be checked based on setting in database */
+	if ( isset( $options['active'] ) ) {
+		$checked = 'checked';
+	}
+	else {
+		$checked = '';
+	}
+	
+	echo '<input id="active" name="cc_relogo_options[active]" type="checkbox" value="Active" ' . $checked . '>';
+} // End cc_relogo_active_callback()
 
 /* Validate the options submitted by the user */
 function cc_relogo_options_validate( $input ) {
@@ -81,6 +103,9 @@ function cc_relogo_options_validate( $input ) {
 	else {
 		add_settings_error( 'cc_relogo_options', 'invalid-url-protocol', 'You did not provide a valid URL. The URL must start with either "http://" or "https://".' );
 	}
+	
+	/* Directly pass options not needing validation back to the database */
+	$options['active'] 		= $input['active'];
 	
 	return $options;
 } // End cc_relogo_options_validate()

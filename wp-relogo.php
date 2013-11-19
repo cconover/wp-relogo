@@ -3,7 +3,7 @@
 Plugin Name: Relogo
 Plugin URI: https://christiaanconover.com/code/wp-relogo
 Description: Add support for the rel="logo" tag to your site, in accordance with the spec published at <a href="http://relogo.org">relogo.org</a>. <strong>This requires your logo in SVG format.</strong>
-Version: 0.3.0
+Version: 0.4.0
 Author: Christiaan Conover
 Author URI: https://christiaanconover.com
 License: GPLv2
@@ -15,23 +15,20 @@ License: GPLv2
  * Now we set up the plugin for WordPress to execute it
  */
 function cc_relogo_setup() {
-	/* Add the tag to wp_head() */
-	add_action( 'wp_head', 'cc_relogo_addtag' );
+	add_action( 'wp_head', 'cc_relogo_reltag' ); // Add the rel="logo" tag to wp_head()
 }
 add_action( 'plugins_loaded', 'cc_relogo_setup' ); // Add setup to plugins_loaded()
 
 
-/**
- * Add rel="logo" tag to <head>
- */
-function cc_relogo_addtag() {
+/* Add rel="logo" tag to <head> */
+function cc_relogo_reltag() {
 	$options = get_option( 'cc_relogo_options' ); // Get plugin options
 	
 	/* If there's a value for the logo URL, create the tag */
-	if ( isset( $options['logourl'] ) ) {
-		echo '<link rel="logo" type="image/svg" href="' . $options['logourl'] . '" />';
+	if ( isset( $options['active'] ) && isset( $options['logourl'] ) ) {
+		echo '<link rel="logo" type="image/svg" href="' . $options['logourl'] . '" />' . PHP_EOL;
 	}
-} // End create tag
+} // End cc_relogo_reltag()
 
 
 /**
@@ -53,12 +50,12 @@ function cc_relogo_activate() {
 		deactivate_plugins( basename(__FILE__) ); // Deactivate the plugin
 	}
 	
-	$defaultlogo = plugin_dir_url( __FILE__ ) . 'assets/relogo.svg'; // Relogo logo SVG, included with plugin
+	$defaultlogo = plugin_dir_url( __FILE__ ) . 'assets/img/relogo.svg'; // Relogo logo SVG, included with plugin
 	
 	/* Set default options for plugin */
 	$options = array (
-		'logourl'	=> $defaultlogo,	// 'logourl' is set to the Relogo logo
-		'active'	=> ''				// Adding tag to head is off
+		'logourl'		=> $defaultlogo,	// 'logourl' is set to the Relogo logo
+		'active'		=> ''				// Adding tag to head is off
 	);
 	add_option( 'cc_relogo_options', $options );
 } // End of activation
