@@ -16,7 +16,6 @@ License: GPLv2
  */
 function cc_relogo_setup() {
 	add_action( 'wp_head', 'cc_relogo_reltag' ); // Add the rel="logo" tag to wp_head()
-	// add_action( 'wp_enqueue_scripts', 'cc_relogo_downloadtiptags' ); // Add Logo Downloadtip to script calls in <head>
 }
 add_action( 'plugins_loaded', 'cc_relogo_setup' ); // Add setup to plugins_loaded()
 
