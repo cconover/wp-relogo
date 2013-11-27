@@ -36,7 +36,7 @@ function cc_relogo_admin_init() {
 		'cc_relogo_active_callback',		// Callback function to display the field
 		'cc-relogo',						// Page ID for the options page
 		'options'							// Settings section in which to display the field
-	);	
+	);
 	add_settings_field(						// Logo URL
 		'logourl',
 		'Logo URL',
@@ -163,6 +163,9 @@ function cc_relogo_options_page() {
 		<?php
 		cc_relogo_api_imgtag(); // Display API-based <img> tag
 		?>
+		<br />
+		<!-- Button to donate Bitcoins -->
+		<p>Like this plugin? Why not <a href="https://christiaanconover.com/code/wp-relogo#donate" target="_blank">buy me a cup of coffee</a>?</p>
 	</div>
 	
 	<?php	
