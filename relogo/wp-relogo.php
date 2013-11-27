@@ -3,7 +3,7 @@
 Plugin Name: Relogo
 Plugin URI: https://christiaanconover.com/code/wp-relogo
 Description: Add support for the rel="logo" tag to your site, in accordance with the spec published at <a href="http://relogo.org">relogo.org</a>. <strong>This requires your logo in SVG format.</strong>
-Version: 0.4.0
+Version: 0.4.1
 Author: Christiaan Conover
 Author URI: https://christiaanconover.com
 License: GPLv2
