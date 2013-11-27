@@ -4,7 +4,7 @@ Donate link: https://christiaanconover.com/code/wp-relogo#donate
 Tags: logo, relogo, graphics, head
 Requires at least: 3.5.2
 Tested up to: 3.7.1
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,9 @@ The rel="logo" spec requires the use of SVG (.svg) image files.
 1. Settings page for Relogo.
 
 == Changelog ==
+
+= 0.4.2 =
+Added a donate link to readme.txt and to the Options page
 
 = 0.4.1 =
 * Display admin notice if the tag is not set to Active. Version 0.4.0 adds field, but is off by default and user is not made aware.
