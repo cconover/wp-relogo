@@ -1,5 +1,6 @@
 === Relogo ===
 Contributors: cconover
+Donate link: https://christiaanconover.com/code/wp-relogo#donate
 Tags: logo, relogo, graphics, head
 Requires at least: 3.5.2
 Tested up to: 3.7.1
